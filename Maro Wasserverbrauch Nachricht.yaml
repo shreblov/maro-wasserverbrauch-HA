@@ -1,0 +1,57 @@
+alias: Maro Wasserverbrauch Nachricht
+description: ''
+triggers:
+  - trigger: time
+    at: '07:00:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+  - trigger: time
+    at: '12:00:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+  - trigger: time
+    at: '13:00:00'
+    weekday:
+      - sun
+conditions: []
+actions:
+  - action: shell_command.browserless_scraper
+    metadata: {}
+    data:
+      function: maro_scraper.js
+      output: wasserverbrauch_aktuell.json
+  - action: file.read_file
+    metadata: {}
+    data:
+      file_name: /config/www/browserless/wasserverbrauch_aktuell.json
+      file_encoding: JSON
+    response_variable: wasserverbrauch
+  - action: input_number.set_value
+    metadata: {}
+    target:
+      entity_id: input_number.maro_wasserverbrauch_aktuell
+    data:
+      value: '{{ wasserverbrauch.data.wasser | float(1) }}'
+  - if:
+      - condition: template
+        value_template: >-
+          {{ (states('input_number.maro_wasserverbrauch_grenzwert') | float(1))
+          < (states('input_number.maro_wasserverbrauch_aktuell')| float(1)) }}
+    then:
+      - action: notify.signal
+        metadata: {}
+        data:
+          message: Wasser auffüllen
+          title: Maro
+mode: single

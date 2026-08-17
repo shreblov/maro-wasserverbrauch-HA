@@ -1,0 +1,12 @@
+type: entities
+entities:
+  - entity: input_number.maro_wasserverbrauch_grenzwert
+    name: auffüllen bei
+    type: simple-entity
+  - entity: input_number.maro_wasserverbrauch_aktuell
+    name: Stand
+    type: simple-entity
+  - entity: script.maro_wasserverbrauch_nach_auffuellen
+    icon: mdi:cup-water
+    name: Wasser aufgefüllt
+title: Maro Wasserwarnung

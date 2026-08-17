@@ -1,0 +1,23 @@
+sequence:
+  - action: shell_command.browserless_scraper
+    metadata: {}
+    data:
+      function: maro_scraper.js
+      output: wasserverbrauch_basis.json
+  - action: file.read_file
+    metadata: {}
+    data:
+      file_name: /config/www/browserless/wasserverbrauch_basis.json
+      file_encoding: JSON
+    response_variable: wasserverbrauch
+  - action: input_number.set_value
+    metadata: {}
+    target:
+      entity_id: input_number.maro_wasserverbrauch_grenzwert
+    data:
+      value: >
+        {{ wasserverbrauch.data.wasser | float(1) +
+        states('input_number.maro_wasserverbrauch_delta') | float(1) }}
+mode: single
+alias: Maro_Wasserverbrauch_nach_auffüllen
+description: holt den Wert des Wasserverbrauchs, zu starten direkt nach auffüllen
