@@ -1,15 +1,15 @@
 # Maro Model 1 Benachrichtigung über Wasserverbrauch mit Home Assistant
 Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit.  
 
-  Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserverbrauch der Maro von der Maro Home Webseite auszulesen und in Home Assistant abzuspeichern. Ein aktueller Wasserverbrauchswert größer als ein Grenzwert löst eine Benachrichtigung über Signal aus. Grenzwert und Zeitpunkt der Überprüfung sind individuell konfigurierbar.  
+  Dieses Repository enthält die Anleitung und den Code, den „Wasserverbrauch gesamt“ von der Maro Mein Model 1 Webseite auszulesen und in Home Assistant abzuspeichern. Ein aktueller „Wasserverbrauch gesamt“ größer als ein Grenzwert löst eine Benachrichtigung über Signal aus. Grenzwert und Zeitpunkt der Überprüfung sind individuell konfigurierbar.  
 
   
-  Der Ablauf: nach Befüllen des Wassertanks liest ein manuell gestartetes Home Assistant Script den aktuellen Wasserverbrauchswert aus der Maro Home Webseite aus. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ergibt den Grenzwert. Zu selbst festzulegenden Zeiten liest eine Automation den dann aktuellen Wasserverbrauchswert aus und vergleicht ihn mit dem Grenzwert. Ein aktueller Wert größer als der Grenzwert löst die Benachrichtigung aus.  
+  Der Ablauf: nach Befüllen des Wassertanks liest ein manuell gestartetes Home Assistant Script den aktuellen „Wasserverbrauch gesamt“ von der Maro Mein Model 1 Webseite. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ergibt den Grenzwert. Zu selbst festzulegenden Zeiten liest eine Automation den dann aktuellen „Wasserverbrauch gesamt“ und vergleicht diesen mit dem Grenzwert. Ein aktueller Wert größer als der Grenzwert löst die Benachrichtigung aus.  
 
   Beispiel:   
-- Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.
-- Aktueller Wert 40,5 L, keine Benachrichtigung.
-- Aktueller Wert 41,2 L, Benachrichtigung.   
+- Delta-Wert 1 L, „Wasserverbrauch gesamt“ bei Auffüllen 40 L, Grenzwert dann 41 L.
+- Aktueller „Wasserverbrauch gesamt“ 40,5 L, keine Benachrichtigung.
+- Aktueller „Wasserverbrauch gesamt“ 41,2 L, Benachrichtigung.   
     
 Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://community.home-assistant.io/t/guide-scraping-dynamic-websites-with-browserless-multiscrape-v2-update/665676) von 2024 mit einigen Anpassungen/Erweiterungen von mir.
 
