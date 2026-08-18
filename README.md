@@ -7,8 +7,8 @@ Ich nutze die Maro kein bis zwei Mal pro Tag, pro Bezug verbrauche ich ca. 0,2 b
   Der Ablauf: nach Befüllen des Wassertanks liest ein manuell gestartetes Home Assistant Script den aktuellen Wasserverbrauchswert aus der Maro Home Webseite aus. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ist der Grenzwert. Zu selbst festzulegenden Zeiten liest eine Automation den dann aktuellen Wasserverbrauchswert aus und vergleicht ihn mit dem Grenzwert. Ein aktueller Wert größer als der Grenzwert löst die Benachrichtigung aus.  
 
   Beispiel:   
-- Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.  
-- Aktueller Wert 40,5 L, keine Benachrichtigung.  
+- Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.
+- Aktueller Wert 40,5 L, keine Benachrichtigung.
 - Aktueller Wert 41,2 L, Benachrichtigung.  
   
   Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://community.home-assistant.io/t/guide-scraping-dynamic-websites-with-browserless-multiscrape-v2-update/665676) von 2024 mit einigen Anpassungen/Erweiterungen von mir.
