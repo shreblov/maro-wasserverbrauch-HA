@@ -1,4 +1,4 @@
-# Maro Model 1 Wasserverbrauchsbenachrichtigung mit Home Assistant
+# Maro Model 1 Benachrichtigung über Wasserverbrauch mit Home Assistant
 Ich nutze die Maro kein bis zwei Mal pro Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit.  
 
   Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserverbrauch der Maro von der Maro Home Webseite auszulesen und in Home Assistant abzuspeichern. Ein aktueller Wasserverbrauchswert größer als ein Grenzwert löst eine Benachrichtigung über Signal aus. Grenzwert und Zeitpunkt der Überprüfung sind individuell konfigurierbar.  
