@@ -4,7 +4,7 @@ Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bi
   Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserverbrauch der Maro von der Maro Home Webseite auszulesen und in Home Assistant abzuspeichern. Ein aktueller Wasserverbrauchswert größer als ein Grenzwert löst eine Benachrichtigung über Signal aus. Grenzwert und Zeitpunkt der Überprüfung sind individuell konfigurierbar.  
 
   
-  Der Ablauf: nach Befüllen des Wassertanks liest ein manuell gestartetes Home Assistant Script den aktuellen Wasserverbrauchswert aus der Maro Home Webseite aus. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ist der Grenzwert. Zu selbst festzulegenden Zeiten liest eine Automation den dann aktuellen Wasserverbrauchswert aus und vergleicht ihn mit dem Grenzwert. Ein aktueller Wert größer als der Grenzwert löst die Benachrichtigung aus.  
+  Der Ablauf: nach Befüllen des Wassertanks liest ein manuell gestartetes Home Assistant Script den aktuellen Wasserverbrauchswert aus der Maro Home Webseite aus. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ergibt den Grenzwert. Zu selbst festzulegenden Zeiten liest eine Automation den dann aktuellen Wasserverbrauchswert aus und vergleicht ihn mit dem Grenzwert. Ein aktueller Wert größer als der Grenzwert löst die Benachrichtigung aus.  
 
   Beispiel:   
 - Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.
