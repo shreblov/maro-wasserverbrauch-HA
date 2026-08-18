@@ -46,10 +46,10 @@ cd /config/scripts
 chmod +x ./browserless_scraper.sh  
 
 Einstellungen>Automationen & Szenen>Scripts>Skript erstellen, in den YAML Modus wechseln und den Inhalt aus der Datei 
-[Maro Wasserverbrauch nach auffuellen.yaml](./<Maro Wasserverbrauch nach auffuellen.yaml>) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch nach auffuellen. Entität-ID sollte dann script.maro_wasserverbrauch_nach_auffuellen sein. Dieses Script berechnet den Grenzwert aus aktuellem "Wasserverbrauch gesamt" + Delta. Ein neuer Wert für Delta wird erst nach (!) Aufruf des Scripts berücksichtigt.   
+[Maro Wasserverbrauch nach auffuellen.yaml](./Maro_Wasserverbrauch_nach_auffuellen.yaml) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch nach auffuellen. Entität-ID sollte dann script.maro_wasserverbrauch_nach_auffuellen sein. Dieses Script berechnet den Grenzwert aus aktuellem "Wasserverbrauch gesamt" + Delta. Ein neuer Wert für Delta wird erst nach (!) Aufruf des Scripts berücksichtigt.   
 
 Einstellungen>Automationen & Szenen>Automationen>Automation erstellen, in den YAML Modus wechseln und den Inhalt aus der Datei 
-[Maro Wasserverbrauch Nachricht.yaml](./<Maro Wasserverbrauch Nachricht.yaml>) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch Nachricht. Entität-ID sollte dann automation.maro_wasserverbrauch_nachricht sein.   
+[Maro Wasserverbrauch Nachricht.yaml](./Maro_Wasserverbrauch_Nachricht.yaml) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch Nachricht. Entität-ID sollte dann automation.maro_wasserverbrauch_nachricht sein.   
 In der Automation den Auslöser „Sobald“ an die eigenen Erfordernisse anpassen. Die von mir gesetzten Zeiten/Tage sind vor meinen üblichen Bezugszeiten.  
 Abschließend noch den Schritt „Send a notification with signal“ an die eigenen Anforderungen anpassen (z. B. anderer Messenger oder LED an Voice PE einschalten oder oder oder…).   
 
