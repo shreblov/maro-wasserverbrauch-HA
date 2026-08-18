@@ -1,9 +1,9 @@
 # Maro Model 1 Wasserverbrauchsbenachrichtigung mit Home Assistant
 Ich nutze die Maro kein bis zwei mal pro Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Warnung "Bitte Wasser nachfüllen" immer zur Unzeit.  
-Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserverbrauch der Maro von der Maro Home Webseite auszulesen und in Home Assistant abzuspeichern. Wenn der aktuelle Wasserverbrauchswert höher als ein eingestellter Grenzwert ist, wird eine Benachrichtigung über Signal gesendet. Bei welchem Wasserbrauchswert und zu welchem Zeitpunkt die Benachrichtigung erfolgen soll, kann individuell konfiguriert werden.  
+  Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserverbrauch der Maro von der Maro Home Webseite auszulesen und in Home Assistant abzuspeichern. Wenn der aktuelle Wasserverbrauchswert größer als ein Grenzwert ist, wird eine Benachrichtigung über Signal gesendet. Bei welchem Wasserbrauchswert und zu welchem Zeitpunkt die Benachrichtigung erfolgen soll, kann individuell konfiguriert werden.  
 
   
-  Der Ablauf: nach Befüllen des Wassertanks startet man manuell ein Home Assistant Script, welches den aktuellen Wasserverbrauch aus der Maro Home Webseite ausliest. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ist der Grenzwert. Zu selbst festzulegenden Zeiten wird eine Automation gestartet, die den dann aktuellen Wasserverbrauchswert ausliest und mit dem Grenzwert vergleicht. Ist der aktuelle Wert größer als der Grenzwert, wird die Benachrichtigung ausgelöst.  
+  Der Ablauf: nach Befüllen des Wassertanks wird manuell ein Home Assistant Script gestartet, welches den aktuellen Wasserverbrauch aus der Maro Home Webseite ausliest. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ist der Grenzwert. Zu selbst festzulegenden Zeiten startet eine Automation, die den dann aktuellen Wasserverbrauchswert ausliest und mit dem Grenzwert vergleicht. Ist der aktuelle Wert größer als der Grenzwert, wird die Benachrichtigung ausgelöst.  
 
   Beispiel:   
 - Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.  
