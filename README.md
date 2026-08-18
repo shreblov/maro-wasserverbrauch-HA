@@ -28,17 +28,17 @@ Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit de
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
 - input_number.maro_wasserverbrauch_grenzwert mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
 - input_number.maro_wasserverbrauch_aktuell mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
--  input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 1.0 L setzen. Das kann später ggf. angepasst werden.
+- input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 1.0 L setzen. Das kann später ggf. angepasst werden.
 
 Optional: im Dashboard eine neue Entitäten-Kachel anlegen, in YAML bearbeiten und den Inhalt der Datei Dashboard Entities Card.yaml einfügen.  
 
 Mit z. B. dem Studio Code Editor drei Verzeichnisse und zwei Dateien anlegen:
-- /config/scripts
-  Hier eine neue Datei erzeugen, den Inhalt der Datei browserless_scraper.sh hineinkopieren und als browserless_scraper.sh abspeichern.
-- /config/js_scrapers
-  Hier eine neue Datei erzeugen, den Inhalt der Datei maro_scraper.js hineinkopieren, DEINUSERNAME und DEINPASSWORT ersetzen und als maro_scraper.js abspeichern.
-- /config/www/browserless
- Hier legen Script und die Automation die .json-Dateien mit Wasserverbrauchswerten aktuell und Basis (Beispiel siehe wasserverbrauch_aktuell.json). 
+- /config/scripts<br>
+Hier eine neue Datei erzeugen, den Inhalt der Datei browserless_scraper.sh hineinkopieren und als browserless_scraper.sh abspeichern.
+- /config/js_scrapers<br>
+Hier eine neue Datei erzeugen, den Inhalt der Datei maro_scraper.js hineinkopieren, DEINUSERNAME und DEINPASSWORT ersetzen und als maro_scraper.js abspeichern.
+- /config/www/browserless<br>
+  Hier legen Script und die Automation die .json-Dateien mit Wasserverbrauchswerten aktuell und Basis (Beispiel siehe wasserverbrauch_aktuell.json). 
 
 Mit z. B. dem Terminal in das Verzeichnis /config/scripts navigieren und die Datei browserless_scraper.sh ausführbar machen:  
 chmod +x browserless_scraper.sh  
