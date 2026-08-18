@@ -41,7 +41,8 @@ Hier eine neue Datei erzeugen, den Inhalt der Datei maro_scraper.js hineinkopier
   Hier legen Script und die Automation die .json-Dateien mit Wasserverbrauchswerten aktuell und Basis (Beispiel siehe wasserverbrauch_aktuell.json). 
 
 Mit z. B. dem Terminal in das Verzeichnis /config/scripts navigieren und die Datei browserless_scraper.sh ausführbar machen:  
-chmod +x browserless_scraper.sh  
+cd /config/scripts  
+chmod +x ./browserless_scraper.sh  
 
 Unter Einstellungen>Automationen & Szenen>Scripts>Skript erstellen, in den YAML Modus wechseln und den Inhalt aus der Datei … hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch nach auffuellen. Entität-ID sollte dann script.maro_wasserverbrauch_nach_auffuellen sein. Dieses Script berechnet den Grenzwert aus aktuellem Wasserverbrauchswert + Delta. Ein neuer Wert für Delta wird erst nach (!) Aufruf des Scripts berücksichtigt.   
 
