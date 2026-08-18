@@ -17,9 +17,9 @@ Die Installation bewegt sich vollständig innerhalb von Home Assistant mit den �
 ## Installation der browserless App in Home Assistant und ein erster Test
 ## Weitere Anpassungen in Home Assistant
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
-- input_number.maro_wasserverbrauch_grenzwert und input_number.maro_wasserverbrauch_aktuell jeweils mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  
--  input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
-- Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 1 L setzen. Das kann später ggf. angepasst werden.
+- input_number.maro_wasserverbrauch_grenzwert mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
+- input_number.maro_wasserverbrauch_aktuell mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
+-  input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 1.0 L setzen. Das kann später ggf. angepasst werden.
 
 Optional: im Dashboard eine neue Entitäten-Kachel anlegen, in YAML bearbeiten und den Inhalt der Datei Dashboard Entities Card.yaml einfügen.  
 
