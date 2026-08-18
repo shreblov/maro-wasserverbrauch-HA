@@ -10,8 +10,8 @@ Ich nutze die Maro kein bis zwei Mal pro Tag, pro Bezug verbrauche ich ca. 0,2 b
 - Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.
 - Aktueller Wert 40,5 L, keine Benachrichtigung.
 - Aktueller Wert 41,2 L, Benachrichtigung.   
-  
-  Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://community.home-assistant.io/t/guide-scraping-dynamic-websites-with-browserless-multiscrape-v2-update/665676) von 2024 mit einigen Anpassungen/Erweiterungen von mir.
+    
+Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://community.home-assistant.io/t/guide-scraping-dynamic-websites-with-browserless-multiscrape-v2-update/665676) von 2024 mit einigen Anpassungen/Erweiterungen von mir.
 
 ## Disclaimer
 Ich bin privater Besitzer einer Maro Model 1. Dieses Repository habe ich für meinen eigenen Bedarf erstellt und ist in meiner Home Assistant Installation funktionsfähig. Gewährleistung und Haftung bei der Nutzung durch Dritte schließe ich aus.
