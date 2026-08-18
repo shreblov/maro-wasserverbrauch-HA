@@ -3,12 +3,12 @@ Ich nutze die Maro kein bis zwei mal pro Tag, pro Bezug verbrauche ich ca. 0,2 b
 Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserverbrauch der Maro von der Maro Home Webseite auszulesen und in Home Assistant abzuspeichern. Wenn der aktuelle Wasserverbrauchswert höher als ein eingestellter Grenzwert ist, wird eine Benachrichtigung über Signal gesendet. Bei welchem Wasserbrauchswert und zu welchem Zeitpunkt die Benachrichtigung erfolgen soll, kann individuell konfiguriert werden.  
 
   
-  Der Ablauf ist folgendermaßen: nach Befüllen des Wassertanks startet man manuell ein Home Assistant Script, welches den aktuellen Wasserverbrauch aus der Maro Home Webseite ausliest. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ist der Grenzwert. Zu selbst festzulegenden Zeiten wird eine Automation gestartet, die den dann aktuellen Wasserverbrauchswert ausliest und mit dem Grenzwert vergleicht. Ist der aktuelle Wert größer als der Grenzwert, wird die Benachrichtigung ausgelöst.  
+  Der Ablauf: nach Befüllen des Wassertanks startet man manuell ein Home Assistant Script, welches den aktuellen Wasserverbrauch aus der Maro Home Webseite ausliest. Zu diesem Wert wird ein Delta-Wert addiert, das zusammen ist der Grenzwert. Zu selbst festzulegenden Zeiten wird eine Automation gestartet, die den dann aktuellen Wasserverbrauchswert ausliest und mit dem Grenzwert vergleicht. Ist der aktuelle Wert größer als der Grenzwert, wird die Benachrichtigung ausgelöst.  
 
   Beispiel:   
-Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.  
-Aktueller Wert 40,5 L, keine Benachrichtigung.  
-Aktueller Wert 41,2 L, Benachrichtigung.  
+- Delta-Wert 1 L, Wasserverbrauchswert bei Auffüllen 40 L, Grenzwert dann 41 L.  
+- Aktueller Wert 40,5 L, keine Benachrichtigung.  
+- Aktueller Wert 41,2 L, Benachrichtigung.  
   
   Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://community.home-assistant.io/t/guide-scraping-dynamic-websites-with-browserless-multiscrape-v2-update/665676) von 2024 mit einigen Anpassungen/Erweiterungen von mir.
 
