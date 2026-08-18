@@ -5,7 +5,7 @@ Dieses Repository enthält die Anleitung und den Code, den Wert für den Wasserv
 Ich bin privater Besitzer einer Maro Model 1. Dieses Repository habe ich für meine eigenen Bedarf erstellt und ist in meiner Home Assistant Installation funktionsfähig. Gewährleistung und Haftung bei der Nutzung durch Dritte schließe ich aus.
 ## Voraussetzungen
 - Maro Home Account und Maro Model 1 in Maro Home eingebunden. 
- Home Assistant, eingerichteter [Benachrichtigungsdienst](https://www.home-assistant.io/integrations/#notifications). Alternativ kann auch der Voice PE für Sprachausgabe verwendet oder der LED eingeschaltet werden.
+- Home Assistant, eingerichteter [Benachrichtigungsdienst](https://www.home-assistant.io/integrations/#notifications). Alternativ kann auch der Voice PE für Sprachausgabe verwendet oder der LED eingeschaltet werden.
 - Ggf. Kenntnisse im Umgang mit dem Entwicklermodus des genutzten Browsers.  
 
 ## Fehlersuche
