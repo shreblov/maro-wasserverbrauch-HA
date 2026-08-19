@@ -24,7 +24,9 @@ Kein Support.
 - Mindestens 2 Stunden Zeit einplanen.
 ## Voll-Backup von Home Assistant
 Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit den üblichen Methoden. Dennoch empfehle ich vor Beginn der Installation ein Voll-Backup von Home Assistant zu erstellen und herunterzuladen.
-## Installation der browserless App in Home Assistant und ein erster Test
+## Installation der browserless chrome App
+https://github.com/alexbelgium/hassio-addons/tree/master/browserless_chrome
+## Test des Scripts zur Extraktion
 ## Weitere Anpassungen in Home Assistant
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
 - input_number.maro_wasserverbrauch_grenzwert mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
@@ -56,7 +58,7 @@ Abschließend noch den Schritt „Send a notification with signal“ an die eige
 Testen: Das Script ausführen und den Trace prüfen. Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei maro_wasserverbrauch_grenzwert.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. Optional sollte der Wert plus Delta auf den Dashboard in der neuen Entitäten-Kachel angezeigt sein. 
   Wenn das Script funktioniert, die Automation testen. Wenn die ebenfalls funktioniert, sollte in dem o. g. Verzeichnis die Datei maro_wasserverbrauch_aktuell.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein, ebenso optional sichtbar in der Entitäten-Kachel auf dem Dashboard.
 ## Fehlersuche
-Fehleranalyse bei der Ausführung der maro_scraper.js mit browserless ist unter [Installation der browserless App](#Installation der browserless App in Home Assistant und ein erster Test) beschrieben.
+Fehleranalyse bei der Ausführung der maro_scraper.js mit browserless ist unter [Installation der browserless App](#Installation der browserless chrome App) beschrieben.
   
   Schreibfehler bei Helper, Script, Automation, Verzeichnissen und Dateinamen sollten einfach durch Analyse der Traces des Scripts und der Automation zu analysieren und beheben sein.
   
