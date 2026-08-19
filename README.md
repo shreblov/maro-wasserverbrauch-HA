@@ -36,12 +36,13 @@ Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit de
 
   Ohne lauffähige Browserless Chromium App funktioniert der weitere Ablauf nicht.
 ## Test der maro_scraper.js zum Auslesen von "Wasserverbrauch gesamt"
-Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Auslesen durch.
+Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Auslesen durch. 
+
   In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der URL DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ den Teil /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
     
   Oben in der Mitte auf das + Zeichen drücken, im Fenster links alles markieren und löschen. Den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) über die Zwischenablage einfügen und DEINUSERNAME und DEINPASSWORT mit den Maro Home Zugangsdaten ersetzen. 
     
-  Betätigen des roten Pfeils startet den Ablauf, der im Fenster rechtx abgespielt wird:
+  Betätigen des roten Pfeils startet den Ablauf, der im Fenster rechts abgespielt wird:
   - Aufruf der Maro Home Webseite, Eingabe der E-Mail Adresse und betätigen des Weiter Buttons.
   - Eingabe des Kennworts und Betätigen des Anmelden Buttons.
   - Im "Angemeldet bleiben" Fenster den Button Nein betätigen.
