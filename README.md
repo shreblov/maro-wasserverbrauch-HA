@@ -34,7 +34,7 @@ Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit de
   Falls der Aufruf der Webseite nicht funktioniert, wieder die Protokolle der App und des Supervisors prüfen. Weitere Fehlerursachen können Add-Ons im Browser oder Einstellungen im lokalen Netzwerk sein.
 
   Ohne lauffähige Browserless Chromium App funktioniert der weitere Ablauf nicht.
-## Test der maro_scraper
+## Test des Auslesens
 Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Auslesen durch. 
 
   In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der Url DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ den Teil /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
@@ -83,6 +83,6 @@ Testen: Das Script ausführen und den Trace prüfen. Schreibfehler bei Dateien, 
 Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei maro_wasserverbrauch_grenzwert.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. Optional sollte der Wert plus Delta auf dem Dashboard in der neuen Entitäten-Kachel angezeigt sein. 
   Wenn das Script funktioniert, die Automation testen. Wenn die ebenfalls funktioniert, sollte in dem o. g. Verzeichnis die Datei maro_wasserverbrauch_aktuell.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein, ebenso optional sichtbar in der Entitäten-Kachel auf dem Dashboard.
   
-  Wenn das Script oder die Automation beim Schritt "shell_command: browserless_scraper" mit einem 60s Timeout abbrechen, zunächst prüfen, ob die Maro Webseite funktioniert. Danach prüfen, ob die Ausführung der maro_scraper.js wie in [Test der maro_scraper](#test-der-maro_scraper) beschrieben funktioniert.
+  Wenn das Script oder die Automation beim Schritt "shell_command: browserless_scraper" mit einem 60s Timeout abbrechen, zunächst prüfen, ob die Maro Webseite funktioniert. Danach prüfen, ob die Ausführung der maro_scraper.js wie in [Test des Auslesens](#<Test%20des%20Auslesens>) beschrieben funktioniert.
   
   Wenn das alles funktioniert, liegt es an dem Aufruf der maro_scraper.js durch ein shell_command. Die Laufzeit dafür ist seitens Home Assistant auf 60s begrenzt und kann nicht geändert werden. Mein Home Assistant läuft in einer VMWare mit 4 GB RAM auf einem älteren Mac mini M1 und die Laufzeit für das gesamte Script bzw. die Aktion beträgt um die 10s. Weniger leistungsfähige Hardware oder langsame Internet-Verbindung könnte dann die Ursache sein. Weitere Informationen dazu bekommt man im Home Assistant über Einstellungen>System>Hardware.
