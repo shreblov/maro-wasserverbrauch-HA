@@ -33,8 +33,18 @@ Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit de
   
   Falls der Aufruf der Webseite nicht funktioniert, wieder die Protokolle der App und des Supervisors prüfen. Weitere Fehlerursachen können Add-Ons im Browser oder Einstellungen im lokalen Netzwerk sein.
 
-  Ohne lauffähige Browserless Chromium funktioniert es nicht.
-## Test des Scripts zur Extraktion
+  Ohne lauffähige Browserless Chromium App funktioniert es nicht.
+## Test der maro_scraper.js zum Auslesen von "Wasserverbrauch gesamt"
+Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Auslesen durch.
+  In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der URL DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
+  Oben in der Mitte auf das + Zeichen drücken, im Fenster links alles markieren und löschen. Den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) über die Zwischenablage einfügen und DEINUSERNAME und DEINPASSWORT mit den Maro Home Zugangsdaten ersetzen. 
+  Betätigen des roten Pfeils startet den Ablauf, der im Fenster links abgespielt wird:
+  - Aufruf der Maro Home Webseite, Eingabe der E-Mail Adresse und betätigen des Weiter Buttons.
+  - Eingabe des Kennworts und Betätigen des Anmelden Buttons.
+  - Im "Angemeldet bleiben" Fenster den Button Nein betätigen.
+  - Von der /dashboard Webseite auf die /my-maro Webseite navigieren.
+  - Die dann heruntergeladene Datei enthält den "Wasserverbrauch gesamt".
+  
 ## Weitere Anpassungen in Home Assistant
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
 - input_number.maro_wasserverbrauch_grenzwert mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
