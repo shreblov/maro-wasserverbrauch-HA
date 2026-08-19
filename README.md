@@ -1,14 +1,14 @@
 # Maro Model 1 Benachrichtigung über Wasserverbrauch mit Home Assistant
 Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit.  
 
-  Der Ablauf: nach Befüllen des Wassertanks liest ein manuell gestartetes Home Assistant Script den aktuellen „Wasserverbrauch gesamt“ von der Maro Mein Model 1 Webseite. Zu diesem Wert wird ein Delta-Wert addiert, das ergibt den Grenzwert. Zu selbst festzulegenden Zeiten liest eine Automation den dann aktuellen „Wasserverbrauch gesamt“ und vergleicht diesen mit dem Grenzwert. Ein aktueller Wert größer als der Grenzwert löst die Benachrichtigung aus.  
-
+  Der Ablauf: nach Befüllen des Wassertanks starte ich manuell ein Home Assistant Script. Dies ruft über die browserless Chrome App die Maro Home Webseite auf, meldet sich mit meinem Account an, navigiert zur "Mein Model 1" Webseite und liest den Wert „Wasserverbrauch gesamt“ aus. Der Wert wird in eine Datei in einem Home Assistant Verzeichnis gespeichert und dann in einer numerischen Variable abgespeichert. Zu diesem Wert wird ein Delta-Wert addiert, das ergibt den Grenzwert. Zu selbst festzulegenden Zeiten startet eine Automation mit dem gleichen Ablauf wie das Script und schreibt den aktuellen "Wasserverbrauch gesamt" in eine andere numerische Variable geschrieben. Ein aktueller Wert größer als der Grenzwert löst eine Benachrichtigung aus.  
+ 
   Beispiel:   
 - Delta-Wert 0.8 L, „Wasserverbrauch gesamt“ bei Auffüllen 40 L, Grenzwert dann 40.8 L.
 - Aktueller „Wasserverbrauch gesamt“ 40,4 L, keine Benachrichtigung.
 - Aktueller „Wasserverbrauch gesamt“ 41,1 L, Benachrichtigung.
 
-  Grenzwert und Zeitpunkt der Überprüfung sind individuell konfigurierbare.
+  Grenzwert und Zeitpunkt der Überprüfung sind individuell konfigurierbar.
     
 Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://community.home-assistant.io/t/guide-scraping-dynamic-websites-with-browserless-multiscrape-v2-update/665676) von 2024 mit einigen Anpassungen/Erweiterungen von mir.
 
@@ -25,7 +25,10 @@ Kein Support.
 ## Voll-Backup von Home Assistant
 Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit den üblichen Methoden. Dennoch empfehle ich vor Beginn der Installation ein Voll-Backup von Home Assistant zu erstellen und herunterzuladen.
 ## Installation der browserless chrome App
-https://github.com/alexbelgium/hassio-addons/tree/master/browserless_chrome
+[browserless chrome](https://github.com/alexbelgium/hassio-addons/tree/master/browserless_chrome) aufrufen und dort den Anweisungen zur Installation der App in Home Assistant folgen. Nach der Installation die App starten und die Schalter für Watchdog und Automatische Updates aktivieren.  
+  Falls der Start nicht funktioniert, die Protokolle der browserless chrome App und des Supervisors prüfen.
+  War der Start erfolgreich, den Button "Benutzeroberfläche öffnen" betätigen und es öffnet sich die Webseite http://DEINE-HA-IP:3000/docs/ oder http://localhost:3000/docs/. Damit war die Installation erfolgreich. 
+  Falls der Aufruf der Webseite nicht funktioniert, wieder die Protokolle der browserless chrome App und des Supervisors prüfen. Weitere Fehlerursachen können Add-Ons im Browser oder Einstellungen im lokalen Netzwerk sein.
 ## Test des Scripts zur Extraktion
 ## Weitere Anpassungen in Home Assistant
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
@@ -33,7 +36,7 @@ Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zah
 - input_number.maro_wasserverbrauch_aktuell mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
 - input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 0.8 L setzen. Das kann später ggf. angepasst werden.
 
-Optional: im Dashboard eine neue Entitäten-Kachel anlegen, in YAML bearbeiten und den Inhalt der Datei [Dashboard Entities Card.yaml](./Dashboard Entities Card.yaml) einfügen.  
+Optional: im Dashboard eine neue Entitäten-Kachel anlegen, in YAML bearbeiten und den Inhalt der Datei [Dashboard_Entities_Card.yaml](./Dashboard_Entities_Card.yaml) einfügen.  
 
 Mit z. B. dem Studio Code Editor drei Verzeichnisse und zwei Dateien anlegen:
 - /config/scripts<br>
