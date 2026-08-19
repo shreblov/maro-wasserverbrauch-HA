@@ -66,7 +66,7 @@ Hier eine neue Datei erzeugen, den Inhalt der Datei [browserless_scraper.sh](./b
 - /config/js_scrapers anlegen<br>
 Hier eine neue Datei erzeugen, den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) hineinkopieren, DEINUSERNAME und DEINPASSWORT ersetzen und als maro_scraper.js abspeichern.
 - /config/www/browserless anlegen<br>
-  Hier legen Script und die Automation die .json-Dateien mit Wasserverbrauchswerten aktuell und Basis (Beispiel siehe [wasserverbrauch_aktuell.json](./wasserverbrauch_aktuell.json)). 
+  Hier legen Script und die Automation die .json-Dateien mit Wasserverbrauchswerten aktuell und Basis ab (Beispiel siehe [wasserverbrauch_aktuell.json](./wasserverbrauch_aktuell.json)). 
 
 Mit z. B. dem Terminal in das Verzeichnis /config/scripts navigieren und die Datei browserless_scraper.sh ausführbar machen:  
 cd /config/scripts  
@@ -81,8 +81,8 @@ In der Automation den Auslöser „Sobald“ an die eigenen Erfordernisse anpass
 Abschließend noch den Schritt „Send a notification with signal“ an die eigenen Anforderungen anpassen (z. B. anderer Messenger oder LED an Voice PE einschalten oder oder oder…).   
 
 Testen: Das Script ausführen und den Trace prüfen. Schreibfehler bei Dateien, Entitäten oder in falschem Verzeichnis angelegte Dateien korrigieren (auch gleich in der Automation).   
-Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei maro_wasserverbrauch_Basis.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. Optional sollte der Wert plus Delta auf dem Dashboard in der neuen Entitäten-Kachel angezeigt sein. 
-  Wenn das Script funktioniert, die Automation testen. Wenn die ebenfalls funktioniert, sollte in dem o. g. Verzeichnis die Datei maro_wasserverbrauch_aktuell.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein, ebenso optional sichtbar in der Entitäten-Kachel auf dem Dashboard.
+Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei wasserverbrauch_Basis.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. Optional sollte der Wert plus Delta auf dem Dashboard in der neuen Entitäten-Kachel angezeigt sein. 
+  Wenn das Script funktioniert, die Automation testen. Wenn die ebenfalls funktioniert, sollte in dem o. g. Verzeichnis die Datei wasserverbrauch_aktuell.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein, ebenso optional sichtbar in der Entitäten-Kachel auf dem Dashboard.
   
   Wenn das Script oder die Automation beim Schritt "shell_command: browserless_scraper" mit einem 60s Timeout abbrechen, zunächst prüfen, ob die Maro Webseite funktioniert. Danach prüfen, ob die Ausführung der maro_scraper.js wie in [Test der maro_scraper.js](#test-maro-scraper) beschrieben funktioniert.
   Wenn Webseite und maro_scraper.js im Browserless Chromium Debugger funktionieren, liegt es vermutlich an dem Aufruf der maro_scraper.js durch ein shell_command. Die Laufzeit dafür ist seitens Home Assistant auf 60s begrenzt und kann nicht geändert werden. Mein Home Assistant läuft in einer VMWare mit 4 GB RAM auf einem älteren Mac mini M1 und die Laufzeit für das gesamte Script bzw. die Automation beträgt um die 10s. Weniger leistungsfähige Hardware oder langsame Internet-Verbindung könnte dann die Ursache sein. Weitere Informationen dazu bekommt man im Home Assistant über Einstellungen>System>Hardware.
