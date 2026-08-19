@@ -1,7 +1,8 @@
 # Maro Model 1 Benachrichtigung über Wasserverbrauch mit Home Assistant
 Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit.  
 
-  Der Ablauf: nach Befüllen des Wassertanks starte ich manuell ein Home Assistant Script. Dies ruft über die browserless Chrome App die Maro Home Webseite auf, meldet sich mit meinem Account an, navigiert zur "Mein Model 1" Webseite und liest den Wert „Wasserverbrauch gesamt“ aus. Der Wert wird in eine Datei in einem Home Assistant Verzeichnis gespeichert und dann in einer numerischen Variable abgespeichert. Zu diesem Wert wird ein Delta-Wert addiert, das ergibt den Grenzwert. Zu selbst festzulegenden Zeiten startet eine Automation mit dem gleichen Ablauf wie das Script und schreibt den aktuellen "Wasserverbrauch gesamt" in eine andere numerische Variable geschrieben. Ein aktueller Wert größer als der Grenzwert löst eine Benachrichtigung aus.  
+  Der Ablauf: nach Befüllen des Wassertanks starte ich manuell ein Home Assistant Script. Dies ruft über die browserless Chromium App die Maro Home Webseite auf, meldet sich mit meinem Account an, navigiert zur "Mein Model 1" Webseite und liest den Wert „Wasserverbrauch gesamt“ aus. Der Wert wird in eine Datei in einem Home Assistant Verzeichnis gespeichert und dann in einer numerischen Variable abgespeichert. Zu diesem Wert wird ein Delta-Wert addiert, das ergibt den Grenzwert.  
+Zweimal täglich startet eine Automation mit dem gleichen Ablauf wie das Script und schreibt den aktuellen "Wasserverbrauch gesamt" in eine andere numerische Variable. Ein aktueller Wert größer als der Grenzwert löst eine Benachrichtigung aus.  
  
   Beispiel:   
 - Delta-Wert 0.8 L, „Wasserverbrauch gesamt“ bei Auffüllen 40 L, Grenzwert dann 40.8 L.
@@ -29,16 +30,18 @@ Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit de
   
   Falls der Start nicht funktioniert, die Protokolle der App und des Supervisors prüfen.
   
-  War der Start erfolgreich, den Button "Benutzeroberfläche öffnen" betätigen und es öffnet sich die http Webseite DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/. Damit war die Installation erfolgreich. 
+  War der Start erfolgreich, den Button "Benutzeroberfläche öffnen" betätigen, es öffnet sich die http Webseite DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/. Damit war die Installation erfolgreich. 
   
   Falls der Aufruf der Webseite nicht funktioniert, wieder die Protokolle der App und des Supervisors prüfen. Weitere Fehlerursachen können Add-Ons im Browser oder Einstellungen im lokalen Netzwerk sein.
 
-  Ohne lauffähige Browserless Chromium App funktioniert es nicht.
+  Ohne lauffähige Browserless Chromium App funktioniert der weitere Ablauf nicht.
 ## Test der maro_scraper.js zum Auslesen von "Wasserverbrauch gesamt"
 Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Auslesen durch.
-  In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der URL DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
+  In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der URL DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ den Teil /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
+    
   Oben in der Mitte auf das + Zeichen drücken, im Fenster links alles markieren und löschen. Den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) über die Zwischenablage einfügen und DEINUSERNAME und DEINPASSWORT mit den Maro Home Zugangsdaten ersetzen. 
-  Betätigen des roten Pfeils startet den Ablauf, der im Fenster links abgespielt wird:
+    
+  Betätigen des roten Pfeils startet den Ablauf, der im Fenster rechtx abgespielt wird:
   - Aufruf der Maro Home Webseite, Eingabe der E-Mail Adresse und betätigen des Weiter Buttons.
   - Eingabe des Kennworts und Betätigen des Anmelden Buttons.
   - Im "Angemeldet bleiben" Fenster den Button Nein betätigen.
