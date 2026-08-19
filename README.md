@@ -24,11 +24,16 @@ Kein Support.
 - Mindestens 2 Stunden Zeit einplanen.
 ## Voll-Backup von Home Assistant
 Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit den üblichen Methoden. Dennoch empfehle ich vor Beginn der Installation ein Voll-Backup von Home Assistant zu erstellen und herunterzuladen.
-## Installation der browserless chrome App
-[browserless chrome](https://github.com/alexbelgium/hassio-addons/tree/master/browserless_chrome) aufrufen und dort den Anweisungen zur Installation der App in Home Assistant folgen. Nach der Installation die App starten und die Schalter für Watchdog und Automatische Updates aktivieren.  
-  Falls der Start nicht funktioniert, die Protokolle der browserless chrome App und des Supervisors prüfen.
-  War der Start erfolgreich, den Button "Benutzeroberfläche öffnen" betätigen und es öffnet sich die Webseite http://DEINE-HA-IP:3000/docs/ oder http://localhost:3000/docs/. Damit war die Installation erfolgreich. 
-  Falls der Aufruf der Webseite nicht funktioniert, wieder die Protokolle der browserless chrome App und des Supervisors prüfen. Weitere Fehlerursachen können Add-Ons im Browser oder Einstellungen im lokalen Netzwerk sein.
+## Installation der Browserless Chromium App
+[Browserless Chromium](https://github.com/alexbelgium/hassio-addons/tree/master/browserless_chrome) aufrufen und dort den Anweisungen zur Installation der App in Home Assistant folgen. Nach der Installation die App starten und die Schalter für Watchdog und Automatische Updates aktivieren.  
+  
+  Falls der Start nicht funktioniert, die Protokolle der App und des Supervisors prüfen.
+  
+  War der Start erfolgreich, den Button "Benutzeroberfläche öffnen" betätigen und es öffnet sich die http Webseite DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/. Damit war die Installation erfolgreich. 
+  
+  Falls der Aufruf der Webseite nicht funktioniert, wieder die Protokolle der App und des Supervisors prüfen. Weitere Fehlerursachen können Add-Ons im Browser oder Einstellungen im lokalen Netzwerk sein.
+
+  Ohne lauffähige Browserless Chromium funktioniert es nicht.
 ## Test des Scripts zur Extraktion
 ## Weitere Anpassungen in Home Assistant
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
