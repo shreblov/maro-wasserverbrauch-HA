@@ -1,5 +1,5 @@
 # Maro Model 1 Benachrichtigung über Wasserverbrauch mit Home Assistant
-Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit.  
+Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit. Da es von Maro kein API gibt, habe ich diesen Benachrichtigungsdienst für Home Assistant entwickelt.  
 
   Der Ablauf: nach Befüllen des Wassertanks starte ich manuell ein Home Assistant Script. Dies ruft über die browserless Chromium App die Maro Home Webseite auf, meldet sich mit meinem Account an, navigiert zur "Mein Model 1" Webseite und liest den Wert „Wasserverbrauch gesamt“ aus. Der Wert wird in eine Datei in einem Home Assistant Verzeichnis gespeichert und dann in einer numerischen Variable abgespeichert. Zu diesem Wert wird ein Delta-Wert addiert, das ergibt den Grenzwert.  
 Zweimal täglich startet eine Automation mit dem gleichen Ablauf wie das Script und schreibt den aktuellen "Wasserverbrauch gesamt" in eine andere numerische Variable. Ein aktueller Wert größer als der Grenzwert löst eine Benachrichtigung aus.  
@@ -17,10 +17,10 @@ Die Vorgehensweise orientiert sich an [Scraping dynamic websites...](https://com
 Ich bin privater Besitzer einer Maro Model 1. Dieses Repository habe ich für meinen eigenen Bedarf erstellt und ist in meiner Home Assistant Installation funktionsfähig. Gewährleistung und Haftung bei der Nutzung durch Dritte schließe ich aus.
 siehe [Fehlersuche](#Fehlersuche)
 ## Support
-Kein Support.
+Kein Support. Tips zur Selbsthilfe sind bei den einzelnen Schritten aufgeführt.
 ## Voraussetzungen
 - Maro Home Zugangsdaten und Maro Model 1 in Maro Home eingebunden. 
-- Home Assistant, eingerichteter [Benachrichtigungsdienst](https://www.home-assistant.io/integrations/#notifications). Alternativ kann Voice PE für Sprachausgabe verwendet oder sein LED Ring eingeschaltet werden.
+- Home Assistant und eingerichteter [Benachrichtigungsdienst](https://www.home-assistant.io/integrations/#notifications). Alternativ kann Voice PE für Sprachausgabe verwendet oder sein LED Ring eingeschaltet werden.
 - Ggf. Kenntnisse im Umgang mit dem Entwicklermodus des genutzten Browsers.
 - Mindestens 2 Stunden Zeit einplanen.
 ## Voll-Backup von Home Assistant
@@ -38,7 +38,7 @@ Die Installation bewegt sich ausschließlich innerhalb von Home Assistant mit de
 ## Test der maro_scraper.js zum Auslesen von "Wasserverbrauch gesamt"
 Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Auslesen durch. 
 
-  In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der URL DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ den Teil /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
+  In der Browserless Chromium App den Button "Benutzeroberfläche öffnen" betätigen und in der Url DEINE-HA-IP:3000/docs/ oder localhost:3000/docs/ den Teil /docs/ durch /debugger/ ersetzen und mit Enter bestätigen.  
     
   Oben in der Mitte auf das + Zeichen drücken, im Fenster links alles markieren und löschen. Den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) über die Zwischenablage einfügen und DEINUSERNAME und DEINPASSWORT mit den Maro Home Zugangsdaten ersetzen. 
     
@@ -48,6 +48,9 @@ Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Aus
   - Im "Angemeldet bleiben" Fenster den Button Nein betätigen.
   - Von der /dashboard Webseite auf die /my-maro Webseite navigieren.
   - Die dann heruntergeladene Datei enthält den "Wasserverbrauch gesamt".
+
+  Zur Fehleranalyse ist es hilfreich, einen kostenfreien Account bei [browserless.io](www.browserless.io) anzulegen. Dann auf der linken Seite "Rest API Playground" auswählen, im Feld "Your Code here" wieder den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) (mit geändertem DEINUSERNAME und DEINPASSWORT) einfügen und Run betätigen. Nun den Button Ask AI betätigen, den Inhalt der maro_scraper.js hineinkopieren. In der Maro Home auf die Seite gehen, bei der die maro_scraper.js gestoppt hat. Dort über den Entwicklungsmodus des Browsers die HTML in die Zwischenablage kopieren, ebenfalls in das Ask AI Fenster hineinkopieren. Abschließend noch eine Frage dazu stellen (z. B. why does the script stop at...) und die AI analysieren lassen.  
+  Die AI kann die maro_scraper.js auch in eine Debug Version umwandeln. Die startet man wieder in der Rest API und gibt die Rückgabe wieder an die AI zur Analyse. 
   
 ## Weitere Anpassungen in Home Assistant
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
@@ -58,11 +61,11 @@ Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zah
 Optional: im Dashboard eine neue Entitäten-Kachel anlegen, in YAML bearbeiten und den Inhalt der Datei [Dashboard_Entities_Karte.yaml](./Dashboard_Entities_Karte.yaml) einfügen.  
 
 Mit z. B. dem Studio Code Editor drei Verzeichnisse und zwei Dateien anlegen:
-- /config/scripts<br>
+- /config/scripts anlegen<br>
 Hier eine neue Datei erzeugen, den Inhalt der Datei [browserless_scraper.sh](./browserless_scraper.sh) hineinkopieren und als browserless_scraper.sh abspeichern.
-- /config/js_scrapers<br>
+- /config/js_scrapers anlegen<br>
 Hier eine neue Datei erzeugen, den Inhalt der Datei [maro_scraper.js](./maro_scraper.js) hineinkopieren, DEINUSERNAME und DEINPASSWORT ersetzen und als maro_scraper.js abspeichern.
-- /config/www/browserless<br>
+- /config/www/browserless anlegen<br>
   Hier legen Script und die Automation die .json-Dateien mit Wasserverbrauchswerten aktuell und Basis (Beispiel siehe [wasserverbrauch_aktuell.json](./wasserverbrauch_aktuell.json)). 
 
 Mit z. B. dem Terminal in das Verzeichnis /config/scripts navigieren und die Datei browserless_scraper.sh ausführbar machen:  
@@ -70,18 +73,16 @@ cd /config/scripts
 chmod +x ./browserless_scraper.sh  
 
 Einstellungen>Automationen & Szenen>Scripts>Skript erstellen, in den YAML Modus wechseln und den Inhalt aus der Datei 
-[Maro Wasserverbrauch nach auffuellen.yaml](./Maro_Wasserverbrauch_nach_auffuellen.yaml) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch nach auffuellen. Entität-ID sollte dann script.maro_wasserverbrauch_nach_auffuellen sein. Dieses Script berechnet den Grenzwert aus aktuellem "Wasserverbrauch gesamt" + Delta. Ein neuer Wert für Delta wird erst nach (!) Aufruf des Scripts berücksichtigt.   
+[Maro Wasserverbrauch nach auffuellen.yaml](./Maro_Wasserverbrauch_nach_auffuellen.yaml) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch nach auffuellen. Entität-ID sollte dann script.maro_wasserverbrauch_nach_auffuellen sein. Dieses Script berechnet den Grenzwert aus aktuellem "Wasserverbrauch gesamt" + input_number.maro_wasserverbrauch_delta. Ein neuer Wert für input_number.maro_wasserverbrauch_delta wird erst nach (!) Aufruf des Scripts berücksichtigt.   
 
 Einstellungen>Automationen & Szenen>Automationen>Automation erstellen, in den YAML Modus wechseln und den Inhalt aus der Datei 
 [Maro Wasserverbrauch Nachricht.yaml](./Maro_Wasserverbrauch_Nachricht.yaml) hineinkopieren und abspeichern unter dem Namen Maro Wasserverbrauch Nachricht. Entität-ID sollte dann automation.maro_wasserverbrauch_nachricht sein.   
 In der Automation den Auslöser „Sobald“ an die eigenen Erfordernisse anpassen. Die von mir gesetzten Zeiten/Tage sind vor meinen üblichen Bezugszeiten.  
 Abschließend noch den Schritt „Send a notification with signal“ an die eigenen Anforderungen anpassen (z. B. anderer Messenger oder LED an Voice PE einschalten oder oder oder…).   
 
-Testen: Das Script ausführen und den Trace prüfen. Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei maro_wasserverbrauch_grenzwert.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. Optional sollte der Wert plus Delta auf den Dashboard in der neuen Entitäten-Kachel angezeigt sein. 
+Testen: Das Script ausführen und den Trace prüfen. Schreibfehler bei Dateien, Entitäten oder in falschem Verzeichnis angelegte Dateien korrigieren (auch gleich in der Automation).   
+Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei maro_wasserverbrauch_grenzwert.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. Optional sollte der Wert plus Delta auf dem Dashboard in der neuen Entitäten-Kachel angezeigt sein. 
   Wenn das Script funktioniert, die Automation testen. Wenn die ebenfalls funktioniert, sollte in dem o. g. Verzeichnis die Datei maro_wasserverbrauch_aktuell.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein, ebenso optional sichtbar in der Entitäten-Kachel auf dem Dashboard.
-## Fehlersuche
-Fehleranalyse bei der Ausführung der maro_scraper.js mit browserless ist unter [Installation der browserless App](#Installation der browserless chrome App) beschrieben.
   
-  Schreibfehler bei Helper, Script, Automation, Verzeichnissen und Dateinamen sollten einfach durch Analyse der Traces des Scripts und der Automation zu analysieren und beheben sein.
-  
-  Wenn es bei der Ausführung der maro_scraper.js mit browserless ein 60s Timeout gibt, zunächst maro_scraper.js wie in liegt [Installation der browserless App](<Installation der browserless App in Home Assistant und ein erster Test>) beschrieben in der browserless App testen. Sicherheitshalber auch die Maro Webseite über einen Browser aufrufen. Wenn das alles funktioniert, liegt es an dem Aufruf der maro_scraper.js durch ein shell_command. Die Laufzeit dafür ist seitens Home Assistant auf 60s begrenzt und kann nicht geändert werden. Mein Home Assistant läuft in einer VMWare mit 4 GB RAM auf einem älteren Mac mini M1 und die Laufzeit für das gesamte Script bzw. die Aktion beträgt um die 10s. Weniger leistungsfähige Hardware oder langsame Internet-Verbindung könnte dann die Ursache sein. Weitere Informationen dazu bekommt man im Home Assistant über Einstellungen>System>Hardware.
+  Wenn das Script oder die Automation beim Schritt "shell_command: browserless_scraper" mit einem 60s Timeout abbrechen, zunächst prüfen, ob die Maro Webseite funktioniert. Danach prüfen, ob die Ausführung der maro_scraper.js wie in [Test der maro_scraper.js zum Auslesen von "Wasserverbrauch gesamt"](#<Test der maro_scraper.js zum Auslesen von "Wasserverbrauch gesamt">) beschrieben funktioniert.
+  Wenn das alles funktioniert, liegt es an dem Aufruf der maro_scraper.js durch ein shell_command. Die Laufzeit dafür ist seitens Home Assistant auf 60s begrenzt und kann nicht geändert werden. Mein Home Assistant läuft in einer VMWare mit 4 GB RAM auf einem älteren Mac mini M1 und die Laufzeit für das gesamte Script bzw. die Aktion beträgt um die 10s. Weniger leistungsfähige Hardware oder langsame Internet-Verbindung könnte dann die Ursache sein. Weitere Informationen dazu bekommt man im Home Assistant über Einstellungen>System>Hardware.
