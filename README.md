@@ -80,7 +80,7 @@ Einstellungen>Automationen & Szenen>Automationen>Automation erstellen, in den YA
 In der Automation den Auslöser „Sobald“ an die eigenen Erfordernisse anpassen. Die von mir gesetzten Zeiten/Tage sind zwei Mal täglich vor meinen üblichen Bezugszeiten.  
 Abschließend noch den Schritt „Send a notification with signal“ an die eigenen Anforderungen anpassen (z. B. anderer Messenger oder LED an Voice PE einschalten oder oder oder…).   
 
-# Testen
+## Testen
 Das Script ausführen und den Trace prüfen. Schreibfehler bei Dateien, Entitäten oder in falschem Verzeichnis angelegte Dateien korrigieren (auch gleich in der Automation).     
 Wenn alles geklappt hat, sollte in /config/www/browserless eine Datei wasserverbrauch_Basis.json mit dem aktuellen "Wasserverbrauch gesamt" angelegt sein. 
 
