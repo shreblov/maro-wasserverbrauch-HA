@@ -47,7 +47,7 @@ actions:
       - condition: template
         value_template: >-
           {{ (states('input_number.maro_wasserverbrauch_grenzwert') | float(1))
-          < (states('input_number.maro_wasserverbrauch_aktuell')| float(1)) }}
+          <= (states('input_number.maro_wasserverbrauch_aktuell')| float(1)) }}
     then:
       - action: notify.signal
         metadata: {}
