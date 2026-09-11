@@ -56,7 +56,7 @@ Das Javascript [maro_scraper.js](./maro_scraper.js) führt alle Schritte zum Aus
 Unter Einstellungen>Geräte & Dienste>Helfer drei Entitäten für numerische Zahlenwert-Eingabe anlegen:
 - input_number.maro_wasserverbrauch_grenzwert mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
 - input_number.maro_wasserverbrauch_aktuell mit Minimalwert 0, Maximalwert 10000000, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.
-- input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 0.8 L setzen. Das kann später ggf. angepasst werden.
+- input_number.maro_wasserverbrauch_delta mit Minimalwert 0, Maximalwert 10, Typ Eingabefeld, Schrittweite 0,1, Maßeinheit L.  Unter Einstellungen>Werkzeuge>Zustände den Wert für input_number.maro_wasserverbrauch_delta auf 0.5 L setzen. Das kann später ggf. angepasst werden.
 
 Optional: im Dashboard eine neue Entitäten-Kachel anlegen, in YAML bearbeiten und den Inhalt der Datei [Dashboard_Entities_Karte.yaml](./Dashboard_Entities_Karte.yaml) einfügen.  
 
