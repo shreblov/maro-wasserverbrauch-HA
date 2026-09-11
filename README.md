@@ -2,7 +2,7 @@
 Ich nutze die Maro kein bis zwei Mal am Tag, pro Bezug verbrauche ich ca. 0,2 bis 0,3 L Wasser. Dadurch ist eine tägliche Routine wie z. B. Auffüllen des Wassertanks immer morgens für mich nicht sinnvoll. Entgegen statistischer Wahrscheinlichkeit erscheint die Information "Bitte Wasser nachfüllen" immer zur Unzeit. Da es von Maro kein API gibt, habe ich diesen Benachrichtigungsdienst für Home Assistant entwickelt.  
 
   Der Ablauf: nach Befüllen des Wassertanks starte ich manuell ein Home Assistant Script. Dies ruft über die Browserless Chromium App die Maro Home Webseite auf, meldet sich mit meinem Account an, navigiert zur "Mein Model 1" Webseite und liest den Wert „Wasserverbrauch gesamt“ aus. Der Wert wird in eine Datei in einem Home Assistant Verzeichnis gespeichert und dann in einer numerischen Variable abgespeichert. Zu diesem Wert wird ein Delta-Wert addiert, das ergibt den Grenzwert.  
-Zweimal täglich startet eine Automation mit dem gleichen Ablauf wie das Script und schreibt den aktuellen "Wasserverbrauch gesamt" in eine andere numerische Variable. Ein aktueller Wert größer als der Grenzwert löst eine Benachrichtigung aus.  
+Zweimal täglich startet eine Automation mit dem gleichen Ablauf wie das Script und schreibt den aktuellen "Wasserverbrauch gesamt" in eine andere numerische Variable. Ein aktueller Wert größer gleich dem Grenzwert löst eine Benachrichtigung aus.  
  
 Beispiel: 
 - Delta-Wert 0.8 L, „Wasserverbrauch gesamt“ bei Auffüllen 40 L, Grenzwert dann 40.8 L.
